@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  classification:
+    build:
+      context: .
+    image: classification
+    container_name: classification
+    ports:
+      - "8028:8028"
+    volumes:
+      - ./notebook:/classification/notebook
+      - ./data:/classification/data
+      - ./src:/classification/src
+      - ./result:/classification/result
+    command: jupyter notebook --port=8028 --ip=0.0.0.0 --NotebookApp.token='' --allow-root 
+    # tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [utility, compute, video]

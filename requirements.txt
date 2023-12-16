@@ -1,0 +1,10 @@
+torchvision>=0.5.0
+tqdm
+pillow
+matplotlib
+notebook
+albumentations
+seaborn
+scikit-learn
+efficientnet_pytorch
+adamp
